@@ -15,6 +15,6 @@ class Person extends Model
 
     public function contacts()
     {
-        return $this->hasMany('App\Contacts');
+        return $this->hasMany('App\Contact');
     }
 }

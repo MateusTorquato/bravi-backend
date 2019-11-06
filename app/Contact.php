@@ -15,7 +15,8 @@ class Contact extends Model
 
     public static $rules = [
         'name' => 'required',
-        'email' => 'required',
+        'email' => 'email',
+        'person_id' => 'required|exists:people,id',
     ];
 
     public function person()
