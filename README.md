@@ -1,7 +1,7 @@
+
 Lumen is a micro-framework from Laravel creator, and consists of a smaller, faster and leaner version of a full web application framework. 
 
-Prerequisites
-------------
+## Prerequisites
 
 * PHP >= 7.3
 * [Composer](https://getcomposer.org/download/ "Composer")
@@ -9,8 +9,7 @@ Prerequisites
 * Install lumen:
 > composer global require "laravel/lumen-installer"
 
-Instructions for run the app:
-------------
+## Instructions to run the app
 
 * Clone the repository
 > git clone https://github.com/MateusTorquato/bravi-backend.git
@@ -36,3 +35,11 @@ DB_PASSWORD=
 * To run the application, use
 > php -S localhost:8000 -t public
 
+
+## API Documentation
+
+You can check the API documentation in [apiary](https://bravitest.docs.apiary.io/ "apiary").
+Link to the API on heroku: 
+
+ https://bravi-backend.herokuapp.com/people
+ 
