@@ -1,80 +1,252 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://bravi-backend.herokuapp.com/
 
 # bravi
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Simple Person and Contact API
 
-## Questions Collection [/questions]
+# People [/people]
 
-### List All Questions [GET]
+## List all people [GET]
 
 + Response 200 (application/json)
 
         [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
+              {
+                "id": 1,
+                "name": "Mateus",
+                "last_name": "Torquato de Medeiros",
+                "created_at": "2019-11-07 01:32:23",
+                "updated_at": "2019-11-07 01:32:23",
+                "contacts": [
+                {
+                    "id": 1,
+                    "name": "Mateus",
+                    "last_name": "Torquato contato",
+                    "phone": "99999",
+                    "whatsapp": "88888",
+                    "email": "mat@mat.com",
+                    "person_id": 1,
+                    "created_at": "2019-11-07 04:30:09",
+                    "updated_at": "2019-11-07 04:30:09"
+                },
+                {
+                    "id": 2,
+                    "name": "Mateus",
+                    "last_name": "Torquato contato",
+                    "phone": "99999",
+                    "whatsapp": "88888",
+                    "email": "mat@mat.com",
+                    "person_id": 1,
+                    "created_at": "2019-11-07 04:30:46",
+                    "updated_at": "2019-11-07 04:30:46"
+                }
                 ]
-            }
+              },
+              {
+                "id": 2,
+                "name": "Mateus",
+                "last_name": "Torquato de Medeiros",
+                "created_at": "2019-11-07 01:32:38",
+                "updated_at": "2019-11-07 01:32:38",
+                "contacts": []
+              },
         ]
 
-### Create a New Question [POST]
+## Retrieve person [GET /people/{?id}]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
++ Parameters
+    + id (integer)
+
++ Response 200 (application/json)
+
+        {
+                "id": 1,
+                "name": "Mateus",
+                "last_name": "Torquato de Medeiros",
+                "created_at": "2019-11-07 01:32:23",
+                "updated_at": "2019-11-07 01:32:23",
+                "contacts": []
+        }
+
+## Insert person [POST /people]
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "name": "Mateus",
+            "last_name": "Torquato"
         }
 
 + Response 201 (application/json)
 
-    + Headers
+    + Body
+        
+            {
+                "valid": true,
+                "message": "ok",
+                "person": {
+                "name": "Mateus",
+                "last_name": "Torquato",
+                "updated_at": "2019-11-07 03:46:52",
+                "created_at": "2019-11-07 03:46:52",
+                "id": 28
+            }
 
-            Location: /questions/2
+## Update person [PUT /people/{id}]
+
++ Parameters
+    + id (integer)
+    
++ Request (application/json)
+
+        {
+            "name": "Mateus",
+            "last_name": "Torquato"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+                    
+            {
+              "valid": true,
+              "message": "ok",
+              "person": {
+                "name": "Mateuss",
+                "last_name": "Torquato",
+                "updated_at": "2019-11-07 03:50:16",
+                "created_at": "2019-11-07 03:50:16",
+                "id": 29
+              }
+            }
+
+
++ Response 200
+
+## Delete person [DELETE /people/{id}]
+
++ Parameters
+    + id (integer)
+
++ Response 200
+
+# Contacts [/contacts]
+
+## List all contacts [GET]
+
++ Response 200 (application/json)
+
+        [
+              {
+                "id": 1,
+                "name": "Mateus",
+                "last_name": "Torquato de Medeiros",
+                "created_at": "2019-11-07 01:32:23",
+                "updated_at": "2019-11-07 01:32:23",
+                "contacts": []
+              },
+              {
+                "id": 2,
+                "name": "Mateus",
+                "last_name": "Torquato de Medeiros",
+                "created_at": "2019-11-07 01:32:38",
+                "updated_at": "2019-11-07 01:32:38",
+                "contacts": []
+              },
+        ]
+
+## Retrieve contact [GET /contacts/{?id}{?person_id}]
+
++ Parameters
+    + id (integer)
+    + person_id (integer)
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "Mateus",
+            "last_name": "Torquato de Medeiros",
+            "created_at": "2019-11-07 01:32:23",
+            "updated_at": "2019-11-07 01:32:23",
+            "contacts": []
+        }
+
+## Insert contact [POST /contacts]
+
++ Request (application/json)
+
+        {
+            "name": "Mateus",
+            "last_name": "Torquato contato",
+            "phone": "99999",
+            "whatsapp": "88888",
+            "email": "mat@mat.com",
+            "person_id": 1
+        }
+            
++ Response 201 (application/json)
+
+   + Body
+
+        {
+            "valid": true,
+            "message": "ok",
+            "contact": {
+            "name": "Mateus",
+            "last_name": "Torquato contato",
+            "phone": "99999",
+            "whatsapp": "88888",
+            "email": "mat@mat.com",
+            "person_id": 1,
+            "updated_at": "2019-11-07 04:30:46",
+            "created_at": "2019-11-07 04:30:46",
+            "id": 2
+        }
+
+
+## Update contact [PUT /contacts/{id}]
+
++ Parameters
+    + id (integer)
+
++ Request (application/json)
+
+        {
+            "name": "Mateus",
+            "last_name": "Torquato contato",
+            "phone": "99999",
+            "whatsapp": "88888",
+            "email": "mat@mat.com",
+            "person_id": 1
+        }
+
++ Response 200 (application/json)
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "valid": true,
+                "message": "ok",
+                "contact": {
+                "name": "Mateus",
+                "last_name": "Torquato contato",
+                "phone": "99999",
+                "whatsapp": "88888",
+                "email": "mat@mat.com",
+                "person_id": 1,
+                "updated_at": "2019-11-07 04:30:46",
+                "created_at": "2019-11-07 04:30:46",
+                "id": 2
             }
+
+
++ Response 200
+
+## Delete contact [DELETE /contacts/{id}]
+
++ Parameters
+    + id (integer)
+
++ Response 204
