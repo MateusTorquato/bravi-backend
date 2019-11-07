@@ -14,7 +14,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request, PersonRepository $reposity) : JsonResponse
+    public function index(Request $request) : JsonResponse
     {
         $query = Person::query();
 
