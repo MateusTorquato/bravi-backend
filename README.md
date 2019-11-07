@@ -38,8 +38,4 @@ DB_PASSWORD=
 
 ## API Documentation
 
-You can check the API documentation in [apiary](https://bravitest.docs.apiary.io/ "apiary").
-Link to the API on heroku: 
-
- https://bravi-backend.herokuapp.com/people
- 
+You can check the API documentation at [apiary](https://bravitest.docs.apiary.io/), or test it directly using the the app hosted at [heroku](https://bravi-backend.herokuapp.com) 
