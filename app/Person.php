@@ -10,7 +10,7 @@ class Person extends Model
     ];
 
     public static $rules = [
-        'name' => 'required',
+        'name' => 'required|min:3',
     ];
 
     public function contacts()
