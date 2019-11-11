@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Person;
 use App\Repositories\PersonRepository;
 use Illuminate\Http\JsonResponse;
@@ -58,15 +59,19 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id) : JsonResponse
+    public function destroy(Request $request, $id) : JsonResponse
     {
         $person = Person::find($id);
         if (!$person) {
             return response()->json(['valid' => false, 'message' => "Person doesn't exist"], 400);
         }
 
-        if ($person->contacts()->exists()) {
-            return response()->json(['valid' => false, 'message' => 'Unable to delete person who already have contacts'], 400);
+        if (!$request->force_delete && $person->contacts()->exists()) {
+            return response()->json(['valid' => false, 'can_force' => !$request->force_delete, 'message' => 'Unable to delete person who already have contacts'], 400);
+        }
+
+        if ($request->force_delete) {
+            Contact::where('person_id', $person->id)->delete();
         }
 
         $person->delete();
