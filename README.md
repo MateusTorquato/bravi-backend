@@ -35,6 +35,9 @@ DB_PASSWORD=
 * To run the application, use
 > php -S localhost:8000 -t public
 
+* To run the tests, use
+> ./vendor/bin/phpunit
+
 
 ## API Documentation
 
