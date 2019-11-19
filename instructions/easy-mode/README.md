@@ -8,13 +8,11 @@ If you chose not install make, insted of running the make command, you must run 
 
 ## Instructions to run the app
 
-* Clone the repository
-> git clone https://github.com/MateusTorquato/bravi-backend.git
-
 * Setup the project
 > make setup
 
-* Or... Do it manually:
+## Instructions to run the app - without make
+
 Download all the images and build the app and containers
 
 ```
