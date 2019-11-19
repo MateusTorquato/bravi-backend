@@ -15,7 +15,7 @@ class CreateTablePeople extends Migration
     {
         // Lumen auto-plurarize person to people, so People::all() => select * from person
         Schema::create('people', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
             $table->timestamps();
