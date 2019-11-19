@@ -1,5 +1,4 @@
-
-Lumen is a micro-framework from Laravel creator, and consists of a smaller, faster and leaner version of a full web application framework. 
+Lumen is a micro-framework from Laravel creator, and consists of a smaller, faster and leaner version of a full web application framework.
 
 ## Prerequisites
 
